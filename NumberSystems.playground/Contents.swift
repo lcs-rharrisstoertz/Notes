@@ -61,34 +61,6 @@ var str = "Hello, playground"
 
 //10011010 is the correct binary number
 
-//creates constant with value of 76
-//constant cannot be changed once created
-let valueToConvert = 76
-
-//creates variable with value of "valueToConvert"
-//variables CAN be changed
-var decimalValueLeftToConvert = valueToConvert
-
-//creates string
-//string is just text
-var binaryRepresentation = ""
-
-//the ABSTRACTION we will use is a LOOP
-// Our END condition is that the decimalValueLeftToConvert is 0
-//As long as the condition is true, the code surrounded by brackets will be run repeatedly
-
-while decimalValueLeftToConvert > 0 {
-    //get the next binary digit
-    let nextBinaryDigit = decimalValueLeftToConvert % 2
-    
-    //add that digit to the binary representation
-    //Swift is a strictly typed language- it does not automatically convert data types
-    // to make int into string, we need to specify this
-    binaryRepresentation = String(nextBinaryDigit) + binaryRepresentation
-    //get the decimal value left to convert
-    decimalValueLeftToConvert = decimalValueLeftToConvert / 2
-}
-binaryRepresentation
 
 //Functions are a way to encapsulate related behavior
 //once some behavior is inside a function, the complexity is hidden.
@@ -102,3 +74,36 @@ binaryRepresentation
  
  }
  */
+
+//this function is going to get the binary representation of a value
+func getBinaryRepresentation(of valueToConvert: Int) -> String {
+  
+    //creates variable with value of "valueToConvert"
+    //variables CAN be changed
+    var decimalValueLeftToConvert = valueToConvert
+
+    //creates string
+    //string is just text
+    var binaryRepresentation = ""
+
+    //the ABSTRACTION we will use is a LOOP
+    // Our END condition is that the decimalValueLeftToConvert is 0
+    //As long as the condition is true, the code surrounded by brackets will be run repeatedly
+
+    while decimalValueLeftToConvert > 0 {
+        //get the next binary digit
+        let nextBinaryDigit = decimalValueLeftToConvert % 2
+        
+        //add that digit to the binary representation
+        //Swift is a strictly typed language- it does not automatically convert data types
+        // to make int into string, we need to specify this
+        binaryRepresentation = String(nextBinaryDigit) + binaryRepresentation
+        //get the decimal value left to convert
+        decimalValueLeftToConvert = decimalValueLeftToConvert / 2
+    }
+    return binaryRepresentation
+
+}
+
+//call, or use the function
+getBinaryRepresentation(of: 76)
