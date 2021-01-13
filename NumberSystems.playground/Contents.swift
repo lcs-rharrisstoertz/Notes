@@ -75,8 +75,11 @@ var str = "Hello, playground"
  }
  */
 
-//this function is going to get the binary representation of a value
-func getBinaryRepresentation(of valueToConvert: Int) -> String {
+//enumeration: lists possibilities
+
+
+//get the alternate representation of a value in a different base
+func getRepresentation(of valueToConvert: Int, inBase base: Int) -> String {
   
     //creates variable with value of "valueToConvert"
     //variables CAN be changed
@@ -84,7 +87,7 @@ func getBinaryRepresentation(of valueToConvert: Int) -> String {
 
     //creates string
     //string is just text
-    var binaryRepresentation = ""
+    var representation = ""
 
     //the ABSTRACTION we will use is a LOOP
     // Our END condition is that the decimalValueLeftToConvert is 0
@@ -92,18 +95,18 @@ func getBinaryRepresentation(of valueToConvert: Int) -> String {
 
     while decimalValueLeftToConvert > 0 {
         //get the next binary digit
-        let nextBinaryDigit = decimalValueLeftToConvert % 2
+        let nextDigit = decimalValueLeftToConvert % base
         
         //add that digit to the binary representation
         //Swift is a strictly typed language- it does not automatically convert data types
         // to make int into string, we need to specify this
-        binaryRepresentation = String(nextBinaryDigit) + binaryRepresentation
+        representation = String(nextDigit) + representation
         //get the decimal value left to convert
-        decimalValueLeftToConvert = decimalValueLeftToConvert / 2
+        decimalValueLeftToConvert = decimalValueLeftToConvert / base
     }
-    return binaryRepresentation
+    return representation
 
 }
 
 //call, or use the function
-getBinaryRepresentation(of: 76)
+getRepresentation(of: 7, inBase: 2)
