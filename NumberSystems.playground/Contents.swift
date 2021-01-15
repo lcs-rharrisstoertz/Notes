@@ -75,11 +75,20 @@ var str = "Hello, playground"
  }
  */
 
-//enumeration: lists possibilities
-
+//enumeration: lists possibilities (cases)
+/*
+ The : Int defines the type of raw value
+ abstraction, since it hides complexity
+ makes call site easier to read
+ */
+enum NumberSystemBase: Int {
+    case binary = 2 //2 is raw value for this case
+    case octal = 8 //8 for this one
+    case hexadecimal = 16 //16 for this
+}
 
 //get the alternate representation of a value in a different base
-func getRepresentation(of valueToConvert: Int, inBase base: Int) -> String {
+func getRepresentation(of valueToConvert: Int, inBase base: NumberSystemBase) -> String {
   
     //creates variable with value of "valueToConvert"
     //variables CAN be changed
@@ -95,18 +104,51 @@ func getRepresentation(of valueToConvert: Int, inBase base: Int) -> String {
 
     while decimalValueLeftToConvert > 0 {
         //get the next binary digit
-        let nextDigit = decimalValueLeftToConvert % base
+        let nextDigit = decimalValueLeftToConvert % base.rawValue
         
         //add that digit to the binary representation
         //Swift is a strictly typed language- it does not automatically convert data types
         // to make int into string, we need to specify this
-        representation = String(nextDigit) + representation
+       
+        // if statement to check condition. If true do one thing, if false do something else
+        // == is comparison
+        if base == .hexadecimal {
+           // base is hexadecimal
+            // when something other than 0-9, use ABCDE
+            //switch statement evaluates some value
+            // and take different actions depending on the value
+            switch nextDigit {
+            case 0...9:
+                representation = String(nextDigit) + representation
+            case 10:
+                representation = "A" + representation
+            case 11:
+                representation = "B" + representation
+            case 12:
+                representation = "C" + representation
+            case 13:
+                representation = "D" + representation
+            case 14:
+                representation = "E" + representation
+            case 15:
+                representation = "F" + representation
+            default:
+                break
+            }
+        } else {
+            //base is binary or octal
+            representation = String(nextDigit) + representation
+        }
+        
+        
         //get the decimal value left to convert
-        decimalValueLeftToConvert = decimalValueLeftToConvert / base
+        decimalValueLeftToConvert = decimalValueLeftToConvert / base.rawValue
     }
     return representation
 
 }
 
 //call, or use the function
-getRepresentation(of: 7, inBase: 2)
+
+getRepresentation(of: 7, inBase: .binary)
+
