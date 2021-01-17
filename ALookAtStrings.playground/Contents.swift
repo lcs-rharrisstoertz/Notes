@@ -78,52 +78,52 @@ print("==========================")
  ![string-by-index](string-by-index.png)
 
 */
-// Here's a string to work with
-let school = "Lakefield College School"
-print(school)
-
-print("-------------")
-
-// We can access individual characters of a string using an index
-// NOTE: The first character in a string, it's starting index, is always at position 0
-var index = school.index(school.startIndex, offsetBy: 0)
-let firstCharacter = school[index]
-print("The first character in the string is \(firstCharacter)")
-
-// Print the second character in the string
-index = school.index(school.startIndex, offsetBy: 1)
-let secondCharacter = school[index]
-print("The second character in the string is \(secondCharacter)")
-
-print("-------------")
-
-// We can also access characters relative to the end of the string
-// NOTE: The last character in a string, it's ending index, is always equal to the count of characters in the string, minus 1
-index = school.endIndex
+//// Here's a string to work with
+//let school = "Lakefield College School"
+//print(school)
+//
+//print("-------------")
+//
+//// We can access individual characters of a string using an index
+//// NOTE: The first character in a string, it's starting index, is always at position 0
+//var index = school.index(school.startIndex, offsetBy: 0)
+//let firstCharacter = school[index]
+//print("The first character in the string is \(firstCharacter)")
+//
+//// Print the second character in the string
+//index = school.index(school.startIndex, offsetBy: 1)
+//let secondCharacter = school[index]
+//print("The second character in the string is \(secondCharacter)")
+//
+//print("-------------")
+//
+//// We can also access characters relative to the end of the string
+//// NOTE: The last character in a string, it's ending index, is always equal to the count of characters in the string, minus 1
+//index = school.endIndex
+////let lastCharacter = school[index]
+////print("If you try to access the final character of a string using the end index, it won't work – you're going past the end of the string: \(school[index])")
+//
+//// Here's how to access characters relative to the end of the string...
+//// Get the last character
+//index = school.index(school.endIndex, offsetBy: -1)
 //let lastCharacter = school[index]
-//print("If you try to access the final character of a string using the end index, it won't work – you're going past the end of the string: \(school[index])")
-
-// Here's how to access characters relative to the end of the string...
-// Get the last character
-index = school.index(school.endIndex, offsetBy: -1)
-let lastCharacter = school[index]
-print("Last character of the string is: \(lastCharacter)")
-
-// Get the second last character
-index = school.index(school.endIndex, offsetBy: -2)
-let secondLastCharacter = school[index]
-print("Second last character of the string is: \(secondLastCharacter)")
-
-print("-------------")
-
-// Finally, here is one other way to access the final two characters of the string
-index = school.index(school.startIndex, offsetBy: 23)   // Last character
-let last = school[index]
-print("Last character is: \(last)")
-
-index = school.index(school.startIndex, offsetBy: 22)   // Second last character
-let secondLast = school[index]
-print("Second last character is: \(secondLast)")
+//print("Last character of the string is: \(lastCharacter)")
+//
+//// Get the second last character
+//index = school.index(school.endIndex, offsetBy: -2)
+//let secondLastCharacter = school[index]
+//print("Second last character of the string is: \(secondLastCharacter)")
+//
+//print("-------------")
+//
+//// Finally, here is one other way to access the final two characters of the string
+//index = school.index(school.startIndex, offsetBy: 23)   // Last character
+//let last = school[index]
+//print("Last character is: \(last)")
+//
+//index = school.index(school.startIndex, offsetBy: 22)   // Second last character
+//let secondLast = school[index]
+//print("Second last character is: \(secondLast)")
 
 
 /*:
@@ -142,8 +142,10 @@ print("Second last character is: \(secondLast)")
 // This will separate the output from the examples above from your work
 print("===== Exercise 1 begins =====")
 
-
-
+let name = "Rowan Harris-Stoertz"
+for singleCharacter in name {
+    print(singleCharacter)
+}
 /*:
 ### Exercise 2
 
@@ -159,6 +161,16 @@ print("===== Exercise 2 begins =====")
 let aQuestion = "请问现在几点了?"
 
 // Write code to complete the exercise below...
+// We can access individual characters of a string using an index
+// NOTE: The first character in a string, it's starting index, is always at position 0
+
+print(aQuestion)
+
+var index = aQuestion.index(aQuestion.startIndex, offsetBy: 3)
+print(aQuestion[index])
+
+index = aQuestion.index(aQuestion.endIndex, offsetBy: -5)
+print(aQuestion[index])
 
 /*:
 ### Exercise 3
@@ -179,3 +191,16 @@ Say that you wish to encrypt the word `pen` using a *rightward shift of three ch
 let plainText = "pen"
 
 // Encrypt the starting phrase
+
+var encryptedText = "" //create a variable to store the encrypted text
+var newScalarValue = 0 //create a variable to store each new scalar value
+
+
+for scalar in plainText.unicodeScalars {
+    newScalarValue = Int(scalar.value - 3) //changes variable to the scalar value with 3 subtracted (a rightward shift of 3)
+    if let scalar = UnicodeScalar(newScalarValue) {
+        let encryptedLetter = String(scalar) //converts the scalar value to a unicode letter
+        encryptedText += encryptedLetter //adds letter to string
+    }
+}
+print(encryptedText) //prints encrypted text
