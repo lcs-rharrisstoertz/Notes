@@ -204,3 +204,20 @@ for scalar in plainText.unicodeScalars {
     }
 }
 print(encryptedText) //prints encrypted text
+
+
+
+func convertToCaesarCipher(of textToConvert: String) {
+    var encryptedText = "" //create a variable to store the encrypted text
+    var newScalarValue = 0 //create a variable to store each new scalar value
+    for scalar in textToConvert.unicodeScalars {
+        newScalarValue = Int(scalar.value - 3) //changes variable to the scalar value with 3 subtracted (a rightward shift of 3)
+        if let scalar = UnicodeScalar(newScalarValue) {
+            let encryptedLetter = String(scalar) //converts the scalar value to a unicode letter
+            encryptedText += encryptedLetter //adds letter to string
+        }
+    }
+    print(encryptedText)
+}
+
+convertToCaesarCipher(of: "pen")

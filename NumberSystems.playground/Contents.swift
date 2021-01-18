@@ -62,6 +62,8 @@ var str = "Hello, playground"
 //10011010 is the correct binary number
 
 
+
+
 //Functions are a way to encapsulate related behavior
 //once some behavior is inside a function, the complexity is hidden.
 //we can use, or "call", the function  whenever we want
