@@ -154,3 +154,112 @@ func getRepresentation(of valueToConvert: Int, inBase base: NumberSystemBase) ->
 
 getRepresentation(of: 7, inBase: .binary)
 
+
+////binary to decimal
+////base 2 to base 10
+//
+////the value we are converting
+//let value = "1011011"
+//
+////what base are we converting from
+//let base = 2.0
+//
+////the exponent value at the rightmost digit
+//var exponent = 0.0
+//
+////current sum in decimal
+//var decimalEquivalent = 0.0
+//
+////iterate over each character
+////from right to left
+//for character in value.reversed() {
+//    //get current digit as double (decimal)
+//    if let digit = Double(String(character)) {
+//        //add the current sum
+//       decimalEquivalent += digit * pow(base, exponent)
+//
+//        //increase exponent by 1
+//        exponent += 1
+//    }
+//}
+
+////what's the result
+//decimalEquivalent
+
+////octal to decimal
+////base 8 to base 10
+//
+////the value we are converting
+//let value = "331"
+//
+////what base are we converting from
+//let base = 8.0
+//
+////the exponent value at the rightmost digit
+//var exponent = 0.0
+//
+////current sum in decimal
+//var decimalEquivalent = 0.0
+//
+////iterate over each character
+////from right to left
+//for character in value.reversed() {
+//    //get current digit as double (decimal)
+//    if let digit = Double(String(character)) {
+//        //add the current sum
+//       decimalEquivalent += digit * pow(base, exponent)
+//
+//        //increase exponent by 1
+//        exponent += 1
+//    }
+//}
+//
+////what's the result
+//decimalEquivalent
+
+
+
+
+//hexadecimal to decimal (base 16 to base 10)
+//the value we are converting
+let value = "D9"
+//what base are we converting from
+let base = 16.0
+var exponent = 0.0
+//current sum in decimal
+var decimalEquivalent = 0.0
+//iterate over each character from right to left
+for character in value.reversed() {
+    if let digit = Double(String(character)){
+        decimalEquivalent += digit * pow(base, exponent)
+        exponent += 1
+    } else {
+        switch character {
+        case "A":
+            decimalEquivalent += 10 * pow(base, exponent)
+            exponent += 1
+        case "B":
+            decimalEquivalent += 11 * pow(base, exponent)
+            exponent += 1
+        case "C":
+            decimalEquivalent += 12 * pow(base, exponent)
+            exponent += 1
+        case "D":
+            decimalEquivalent += 13 * pow(base, exponent)
+            exponent += 1
+        case "E":
+            decimalEquivalent += 14 * pow(base, exponent)
+            exponent += 1
+        case "F":
+            decimalEquivalent += 15 * pow(base, exponent)
+            exponent += 1
+        default:
+            if let digit = Double(String(character)){
+                decimalEquivalent += digit * pow(base, exponent)
+                exponent += 1
+            }
+        }
+    }
+//what's the result
+print(decimalEquivalent)
+}

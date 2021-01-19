@@ -16,7 +16,8 @@
  What is the result?
  */
 // Type the code below this line
-
+//var myName: String
+//print(myName)
 
 /*:
  
@@ -38,7 +39,8 @@
  
  */
 // Type the second code example below...
-
+var yourName: String?
+print(yourName)
 
 /*:
  
