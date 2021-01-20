@@ -222,7 +222,7 @@ getRepresentation(of: 7, inBase: .binary)
 
 //hexadecimal to decimal (base 16 to base 10)
 //the value we are converting
-let value = "D9"
+let value = "FEED"
 //what base are we converting from
 let base = 16.0
 var exponent = 0.0
@@ -232,34 +232,14 @@ var decimalEquivalent = 0.0
 for character in value.reversed() {
     if let digit = Double(String(character)){
         decimalEquivalent += digit * pow(base, exponent)
-        exponent += 1
     } else {
-        switch character {
-        case "A":
-            decimalEquivalent += 10 * pow(base, exponent)
-            exponent += 1
-        case "B":
-            decimalEquivalent += 11 * pow(base, exponent)
-            exponent += 1
-        case "C":
-            decimalEquivalent += 12 * pow(base, exponent)
-            exponent += 1
-        case "D":
-            decimalEquivalent += 13 * pow(base, exponent)
-            exponent += 1
-        case "E":
-            decimalEquivalent += 14 * pow(base, exponent)
-            exponent += 1
-        case "F":
-            decimalEquivalent += 15 * pow(base, exponent)
-            exponent += 1
-        default:
-            if let digit = Double(String(character)){
-                decimalEquivalent += digit * pow(base, exponent)
-                exponent += 1
-            }
+        let nextCharacter = String(character)
+        for scalar in nextCharacter.unicodeScalars {
+            decimalEquivalent += Double(scalar.value - 55) * pow(base, exponent)
         }
-    }
+        }
+    exponent += 1
+        }
+
 //what's the result
 print(decimalEquivalent)
-}
