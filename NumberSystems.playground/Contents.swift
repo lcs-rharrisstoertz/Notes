@@ -217,29 +217,42 @@ getRepresentation(of: 7, inBase: .binary)
 ////what's the result
 //decimalEquivalent
 
+//let value = "FEED"
+//let base = 16.0
+//var exponent = 0.0
+//var decimalEquivalent = 0.0
+//for character in value.reversed() {
+//    if let digit = Double(String(character)){
+//        decimalEquivalent += digit * pow(base, exponent)
+//    } else {
+//        let nextCharacter = String(character)
+//        for scalar in nextCharacter.unicodeScalars {
+//            decimalEquivalent += Double(scalar.value - 55) * pow(base, exponent)
+//        }
+//        }
+//    exponent += 1
+//        }
+//print(decimalEquivalent)
 
 
 
-//hexadecimal to decimal (base 16 to base 10)
-//the value we are converting
-let value = "FEED"
-//what base are we converting from
-let base = 16.0
-var exponent = 0.0
-//current sum in decimal
-var decimalEquivalent = 0.0
-//iterate over each character from right to left
-for character in value.reversed() {
-    if let digit = Double(String(character)){
-        decimalEquivalent += digit * pow(base, exponent)
-    } else {
-        let nextCharacter = String(character)
-        for scalar in nextCharacter.unicodeScalars {
-            decimalEquivalent += Double(scalar.value - 55) * pow(base, exponent)
-        }
-        }
-    exponent += 1
-        }
+func getDecimalValue (of value: String, base: Double) -> Double {
+    var exponent = 0.0
+    var decimalEquivalent = 0.0
+    for character in value.reversed() {
+        if let digit = Double(String(character)){
+            decimalEquivalent += digit * pow(base, exponent)
+        } else {
+            let nextCharacter = String(character)
+            for scalar in nextCharacter.unicodeScalars {
+                decimalEquivalent += Double(scalar.value - 55) * pow(base, exponent)
+            }
+            }
+        exponent += 1
+            }
+    return (decimalEquivalent)
 
-//what's the result
-print(decimalEquivalent)
+}
+getDecimalValue(of: "111", base: 2)
+getDecimalValue(of: "F1", base: 16)
+getDecimalValue(of: "17", base: 8)
