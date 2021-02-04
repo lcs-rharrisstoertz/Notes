@@ -30,7 +30,7 @@ struct Person {
     //a function
     // Use a function over a computer property when we need some info to do the job
     func sayHello(with intro: String) {
-        print(intro + name)
+        print("\(intro)\(name)")
     }
     
 }
@@ -43,4 +43,5 @@ var me = Person(name: "Rowan",
 
 
 //say hello a few different ways
-me.sayHello(with: <#T##String#>)
+me.sayHello(with: "Hi, my name is ")
+me.sayHello(with: "Hey, how are you, I'm ")
