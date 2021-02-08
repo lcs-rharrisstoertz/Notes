@@ -41,6 +41,9 @@ var me = Person(name: "Rowan",
                 heightInCentimeters: 177.8,
                 massInKilograms: 58.9)
 
+//gets name
+me.name
+
 
 //say hello a few different ways
 me.sayHello(with: "Hi, my name is ")
